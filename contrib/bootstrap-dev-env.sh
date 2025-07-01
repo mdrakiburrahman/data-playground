@@ -10,15 +10,13 @@
 set -e
 set -m
 
-export PYTHON_VERSION=3.11
-
 echo ""
 echo "┌────────────────────────────────────┐"
 echo "│ Checking for language dependencies │"
 echo "└────────────────────────────────────┘"
 echo ""
 
-if ! command -v python3 &> /dev/null || [[ "$(python3 --version 2>&1)" != *"$PYTHON_VERSION"* ]]; then
+if ! command -v python3 &> /dev/null; then
     echo "Installing Python $PYTHON_VERSION..."
     sudo apt update
     sudo apt upgrade -y
@@ -28,7 +26,7 @@ fi
 if ! command -v rustc &> /dev/null; then
     echo "Installing Rust..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source $HOME/.cargo/env
+    . "$HOME/.cargo/env"
 fi
 
 echo ""
@@ -52,6 +50,7 @@ echo ""
 code --install-extension github.copilot
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance
+code --install-extension rust-lang.rust-analyzer
 code --install-extension vadimcn.vscode-lldb
 
 echo ""
@@ -61,3 +60,6 @@ echo "└──────────┘"
 echo ""
 
 echo "Docker: $(docker --version)"
+echo "Python: $(python3 --version)"
+echo "Rust: $(rustc --version)"
+echo "Cargo: $(cargo --version)"
