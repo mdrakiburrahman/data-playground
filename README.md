@@ -38,11 +38,15 @@ Messing around with Data Vendor tooling.
    chmod +x ${GIT_ROOT}/contrib/bootstrap-dev-env.sh && ${GIT_ROOT}/contrib/bootstrap-dev-env.sh
    ```
 
-## Start Duck DB UI
+## Metric Store
+
+### Start Duck DB UI
 
 ```bash
 duckdb -ui
 ```
+
+> Create/attach a database at `/home/boor/data-playground/docker/cube/city.duckdb`.
 
 Run:
 
@@ -64,3 +68,10 @@ SELECT * FROM DATA
 ```
 
 ![Duck DB](.imgs/duckdb.png)
+
+### Start Cube UI
+
+```bash
+cd ${GIT_ROOT}/docker/cube
+docker compose up -d
+```
