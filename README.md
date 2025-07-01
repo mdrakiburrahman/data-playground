@@ -69,9 +69,22 @@ SELECT * FROM DATA
 
 ![Duck DB](.imgs/duckdb.png)
 
+Ensre you close DuckDB CLI once you're done to unlock the database.
+
 ### Start Cube UI
 
 ```bash
 cd ${GIT_ROOT}/docker/cube
 docker compose up -d
+```
+
+![Query Logs](.imgs/cube-query-logs.png)
+
+![Query UI](.imgs/cube-query-ui.png)
+
+When done:
+
+```bash
+docker compose down
+sudo rm -rf /home/boor/data-playground/docker/cube/.cubestore
 ```

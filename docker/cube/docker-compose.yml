@@ -7,6 +7,6 @@ services:
     environment:
       - CUBEJS_DEV_MODE=true
       - CUBEJS_DB_TYPE=duckdb
-      - CUBEJS_DB_DUCKDB_DATABASE_PATH=./city
+      - CUBEJS_DB_DUCKDB_DATABASE_PATH=./city.duckdb
     volumes:
       - .:/cube/conf
