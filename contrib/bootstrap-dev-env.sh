@@ -41,6 +41,12 @@ if ! command -v docker &> /dev/null; then
 fi
 sudo chmod 666 /var/run/docker.sock
 
+if ! command -v duckdb &> /dev/null; then
+    echo "duckdb not found - installing..."
+    curl https://install.duckdb.org | sh
+    export PATH="$HOME/.duckdb/cli/latest:$PATH"
+fi
+
 echo ""
 echo "┌───────────────────────────────┐"
 echo "│ Installing VS Code extensions │"
@@ -63,3 +69,4 @@ echo "Docker: $(docker --version)"
 echo "Python: $(python3 --version)"
 echo "Rust: $(rustc --version)"
 echo "Cargo: $(cargo --version)"
+echo "DuckDB: $(duckdb --version)"
