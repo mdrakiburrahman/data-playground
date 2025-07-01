@@ -43,3 +43,24 @@ Messing around with Data Vendor tooling.
 ```bash
 duckdb -ui
 ```
+
+Run:
+
+```sql
+CREATE OR REPLACE TABLE data (id int, city varchar(50), state char(2), population int);
+
+INSERT INTO data VALUES (1, 'San Francisco', 'CA', 883305);
+INSERT INTO data VALUES (2, 'Los Angeles', 'CA', 3990456);
+INSERT INTO data VALUES (3, 'New York', 'NY', 8419600);
+INSERT INTO data VALUES (4, 'Chicago', 'IL', 2716000);
+INSERT INTO data VALUES (5, 'Houston', 'TX', 2328000);
+INSERT INTO data VALUES (6, 'Phoenix', 'AZ', 1680992);
+INSERT INTO data VALUES (7, 'Philadelphia', 'PA', 1584200);
+INSERT INTO data VALUES (8, 'San Antonio', 'TX', 1547253);
+INSERT INTO data VALUES (9, 'San Diego', 'CA', 1423851);
+INSERT INTO data VALUES (10, 'Dallas', 'TX', 1341075);
+
+SELECT * FROM DATA
+```
+
+![Duck DB](.imgs/duckdb.png)
