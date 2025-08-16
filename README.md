@@ -43,6 +43,7 @@ Messing around with Data Vendor tooling.
 ### Start Duck DB UI
 
 ```bash
+export PATH="$HOME/.duckdb/cli/latest:$PATH"
 duckdb -ui
 ```
 
@@ -69,7 +70,7 @@ SELECT * FROM DATA
 
 ![Duck DB](.imgs/duckdb.png)
 
-Ensre you close DuckDB CLI once you're done to unlock the database.
+Ensre you close DuckDB CLI once you're done to unlock the database for Cube.
 
 ### Start Cube UI
 
@@ -79,6 +80,8 @@ docker compose up -d
 ```
 
 ![Query Logs](.imgs/cube-query-logs.png)
+
+Browse to `http://localhost:4000/`, click the 3 filters on the left.
 
 ![Query UI](.imgs/cube-query-ui.png)
 
