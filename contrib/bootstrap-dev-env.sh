@@ -29,6 +29,20 @@ if ! command -v rustc &> /dev/null; then
     . "$HOME/.cargo/env"
 fi
 
+if ! command -v java &> /dev/null; then
+    echo "Installing Java (OpenJDK 11)..."
+    sudo apt update
+    sudo apt install -y openjdk-11-jdk
+    
+    JAVA_HOME_PATH="/usr/lib/jvm/java-11-openjdk-amd64"
+    echo "export JAVA_HOME=$JAVA_HOME_PATH" >> ~/.bashrc
+    echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.bashrc
+    export JAVA_HOME=$JAVA_HOME_PATH
+    export PATH=$JAVA_HOME/bin:$PATH
+    
+    echo "JAVA_HOME set to: $JAVA_HOME"
+fi
+
 echo ""
 echo "┌──────────────────────┐"
 echo "│ Installing CLI tools │"
@@ -56,6 +70,7 @@ echo ""
 code --install-extension github.copilot
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance
+code --install-extension ms-toolsai.jupyter
 code --install-extension rust-lang.rust-analyzer
 code --install-extension vadimcn.vscode-lldb
 
@@ -70,3 +85,7 @@ echo "Python: $(python3 --version)"
 echo "Rust: $(rustc --version)"
 echo "Cargo: $(cargo --version)"
 echo "DuckDB: $(duckdb --version)"
+if command -v java &> /dev/null; then
+    echo "Java: $(java -version 2>&1 | head -n 1)"
+    echo "JAVA_HOME: $JAVA_HOME"
+fi
