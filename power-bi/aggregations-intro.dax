@@ -1,0 +1,12 @@
+﻿EVALUATE
+    SUMMARIZECOLUMNS(
+     
+        // GROUP BY COLUMNS
+        DimDate[CalendarYear] ,
+        DimProduct[Color] ,
+         
+        // AGGREGATE CALCULATIONS
+        "Sum of Sales Amount"  , [Sum of Sales Amount] ,
+        "Sum of Order Quantity" , [Sum of Order Quantity],
+        "Count of Transactions" , [Count of Sales]
+        )
