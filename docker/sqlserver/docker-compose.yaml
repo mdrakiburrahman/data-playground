@@ -1,0 +1,10 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    ports:
+     - 31433:1433
+    environment:
+     - ACCEPT_EULA=Y
+     - MSSQL_PID=Standard
+     - SA_PASSWORD=Password!
+     - MSSQL_AGENT_ENABLED=true
