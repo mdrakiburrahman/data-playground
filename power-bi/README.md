@@ -2,7 +2,7 @@
 
 ## User Defined Aggregations
 
-![link](https://dax.tips/2021/09/06/intro-to-power-bi-aggregations/)
+* [Blog](https://dax.tips/2021/09/06/intro-to-power-bi-aggregations/)
 
 Aggregation query:
 
