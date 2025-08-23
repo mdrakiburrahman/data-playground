@@ -1,0 +1,5 @@
+{
+  "UseWorkspace": true,
+  "WorkspaceConnection": "provider=MSOLAP;data source=LOCALHOST\\TABULAR2019",
+  "WorkspaceDatabase": "WorkspaceDB_mruss_20210611_034811"
+}

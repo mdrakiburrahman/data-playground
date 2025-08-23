@@ -1,0 +1,12 @@
+﻿EVALUATE
+SUMMARIZECOLUMNS (
+    Customer[CustomerKey],
+    Customer[Name],
+    FILTER (
+        Customer,
+        CALCULATE (
+            [Sales Amount] > 5000,
+            'Product'[Category] = "Computers"
+        )
+    )
+)

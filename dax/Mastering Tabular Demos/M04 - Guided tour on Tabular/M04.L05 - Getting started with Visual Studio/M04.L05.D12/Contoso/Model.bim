@@ -1,0 +1,670 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/Demo;Contoso 100K",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "Demo",
+            "database": "Contoso 100K"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "demo;Contoso 100K",
+          "EncryptConnection": false
+        }
+      },
+      {
+        "name": "SqlServer Demo Contoso 100K",
+        "connectionString": "Provider=SQLNCLI11;Data Source=Demo;Initial Catalog=Contoso 100K;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "State Code",
+            "dataType": "string",
+            "sourceColumn": "State Code"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State"
+          },
+          {
+            "name": "Zip Code",
+            "dataType": "string",
+            "sourceColumn": "Zip Code"
+          },
+          {
+            "name": "Country Code",
+            "dataType": "string",
+            "sourceColumn": "Country Code"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Continent",
+            "dataType": "string",
+            "sourceColumn": "Continent"
+          },
+          {
+            "name": "Birthday",
+            "dataType": "dateTime",
+            "sourceColumn": "Birthday"
+          },
+          {
+            "name": "Age",
+            "dataType": "int64",
+            "sourceColumn": "Age"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/Demo;Contoso 100K\",",
+                "    dbo_Customer = Source{[Schema=\"dbo\",Item=\"Customer\"]}[Data]",
+                "in",
+                "    dbo_Customer"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Geography",
+            "levels": [
+              {
+                "name": "Country",
+                "ordinal": 0,
+                "column": "Country"
+              },
+              {
+                "name": "State or Province",
+                "ordinal": 1,
+                "column": "State"
+              },
+              {
+                "name": "City",
+                "ordinal": 2,
+                "column": "City"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "columns": [
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "formatString": "MM/dd/yyyy"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Year Quarter",
+            "dataType": "string",
+            "sourceColumn": "Year Quarter"
+          },
+          {
+            "name": "Year Quarter Number",
+            "dataType": "int64",
+            "sourceColumn": "Year Quarter Number"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter"
+          },
+          {
+            "name": "Year Month",
+            "dataType": "string",
+            "sourceColumn": "Year Month"
+          },
+          {
+            "name": "Year Month Short",
+            "dataType": "string",
+            "sourceColumn": "Year Month Short"
+          },
+          {
+            "name": "Year Month Number",
+            "dataType": "int64",
+            "sourceColumn": "Year Month Number"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month"
+          },
+          {
+            "name": "Month Short",
+            "dataType": "string",
+            "sourceColumn": "Month Short"
+          },
+          {
+            "name": "Month Number",
+            "dataType": "int64",
+            "sourceColumn": "Month Number"
+          },
+          {
+            "name": "Day of Week",
+            "dataType": "string",
+            "sourceColumn": "Day of Week"
+          },
+          {
+            "name": "Day of Week Short",
+            "dataType": "string",
+            "sourceColumn": "Day of Week Short"
+          },
+          {
+            "name": "Day of Week Number",
+            "dataType": "int64",
+            "sourceColumn": "Day of Week Number"
+          },
+          {
+            "name": "Working Day",
+            "dataType": "boolean",
+            "sourceColumn": "Working Day"
+          },
+          {
+            "name": "Working Day Number",
+            "dataType": "int64",
+            "sourceColumn": "Working Day Number"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/Demo;Contoso 100K\",",
+                "    dbo_Date = Source{[Schema=\"dbo\",Item=\"Date\"]}[Data]",
+                "in",
+                "    dbo_Date"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "columns": [
+          {
+            "name": "Order Number",
+            "dataType": "int64",
+            "sourceColumn": "Order Number"
+          },
+          {
+            "name": "Line Number",
+            "dataType": "int64",
+            "sourceColumn": "Line Number"
+          },
+          {
+            "name": "Order Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Order Date"
+          },
+          {
+            "name": "Delivery Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Delivery Date"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "StoreKey",
+            "dataType": "int64",
+            "sourceColumn": "StoreKey"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "int64",
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "Unit Price",
+            "dataType": "decimal",
+            "sourceColumn": "Unit Price",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Net Price",
+            "dataType": "decimal",
+            "sourceColumn": "Net Price",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Unit Cost",
+            "dataType": "decimal",
+            "sourceColumn": "Unit Cost",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Currency Code",
+            "dataType": "string",
+            "sourceColumn": "Currency Code"
+          },
+          {
+            "name": "Exchange Rate",
+            "dataType": "double",
+            "sourceColumn": "Exchange Rate"
+          },
+          {
+            "type": "calculated",
+            "name": "Line Amount",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": " Sales[Quantity] * Sales[Net Price]",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/Demo;Contoso 100K\",",
+                "    dbo_Sales = Source{[Schema=\"dbo\",Item=\"Sales\"]}[Data]",
+                "in",
+                "    dbo_Sales"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales Amount",
+            "expression": [
+              " ",
+              "SUMX ( Sales, Sales[Quantity] * Sales[Net Price] )"
+            ],
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Margin",
+            "expression": [
+              " SUMX (",
+              "    Sales, ",
+              "    Sales[Quantity] * ( Sales[Net Price] - Sales[Unit Cost] )",
+              ")"
+            ],
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Margin %",
+            "expression": " [Margin] / [Sales Amount] ",
+            "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ]
+      },
+      {
+        "name": "Store",
+        "columns": [
+          {
+            "name": "StoreKey",
+            "dataType": "int64",
+            "sourceColumn": "StoreKey"
+          },
+          {
+            "name": "Store Code",
+            "dataType": "int64",
+            "sourceColumn": "Store Code"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name"
+          },
+          {
+            "name": "Square Meters",
+            "dataType": "int64",
+            "sourceColumn": "Square Meters"
+          },
+          {
+            "name": "Open Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Open Date"
+          },
+          {
+            "name": "Close Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Close Date"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/Demo;Contoso 100K\",",
+                "    dbo_Store = Source{[Schema=\"dbo\",Item=\"Store\"]}[Data]",
+                "in",
+                "    dbo_Store"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "sourceColumn": "ProductKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Product Code",
+            "dataType": "string",
+            "sourceColumn": "Product Code",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Product Name",
+            "dataType": "string",
+            "sourceColumn": "Product Name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Manufacturer",
+            "dataType": "string",
+            "sourceColumn": "Manufacturer",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Brand",
+            "dataType": "string",
+            "sourceColumn": "Brand",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Color",
+            "dataType": "string",
+            "sourceColumn": "Color",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Weight Unit Measure",
+            "dataType": "string",
+            "sourceColumn": "Weight Unit Measure",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Weight",
+            "dataType": "double",
+            "sourceColumn": "Weight",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Unit Cost",
+            "dataType": "decimal",
+            "sourceColumn": "Unit Cost",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Unit Price",
+            "dataType": "decimal",
+            "sourceColumn": "Unit Price",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Subcategory Code",
+            "dataType": "string",
+            "sourceColumn": "Subcategory Code",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Subcategory",
+            "dataType": "string",
+            "sourceColumn": "Subcategory",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Category Code",
+            "dataType": "string",
+            "sourceColumn": "Category Code",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "type": "calculated",
+            "name": "Price Level",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": " IF ( 'Product'[Unit Price] > 100, \"HIGH\", \"LOW\" )"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Product",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Product].* FROM [dbo].[Product] ",
+              "dataSource": "SqlServer Demo Contoso 100K"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Product].* FROM [dbo].[Product] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Product"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "CustomersBuyingPC",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Customer[CustomerKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Name",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "Customer[Name]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                "",
+                "SUMMARIZECOLUMNS (",
+                "    Customer[CustomerKey],",
+                "    Customer[Name],",
+                "    FILTER ( ",
+                "        Customer,",
+                "        CALCULATE ( ",
+                "            [Sales Amount] >= 5000, ",
+                "            'Product'[Category] = \"Computers\" ",
+                "        ) ",
+                "    )",
+                ")",
+                ""
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "685e98dd-0552-41b6-afe8-517394eecb30",
+        "fromTable": "Sales",
+        "fromColumn": "StoreKey",
+        "toTable": "Store",
+        "toColumn": "StoreKey"
+      },
+      {
+        "name": "61aa8243-7e76-459c-a69b-0329fba7db39",
+        "fromTable": "Sales",
+        "fromColumn": "CustomerKey",
+        "toTable": "Customer",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "10caee62-b2ea-4b86-9c8a-31ebb90de1b3",
+        "fromTable": "Sales",
+        "fromColumn": "Order Date",
+        "toTable": "Date",
+        "toColumn": "Date"
+      },
+      {
+        "name": "32e29998-7b25-4ceb-a481-a9b8e8cca841",
+        "fromTable": "Sales",
+        "fromColumn": "ProductKey",
+        "toTable": "Product",
+        "toColumn": "ProductKey"
+      },
+      {
+        "name": "d0631fb5-0883-48b3-9a25-5901be5bce43",
+        "fromTable": "Sales",
+        "fromColumn": "Delivery Date",
+        "toTable": "Date",
+        "toColumn": "Date",
+        "isActive": false
+      },
+      {
+        "name": "99b814bd-68ca-42c2-a0fa-acf336c8b7f0",
+        "fromTable": "Customer",
+        "fromColumn": "CustomerKey",
+        "toTable": "CustomersBuyingPC",
+        "toColumn": "CustomerKey"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
