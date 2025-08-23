@@ -1,0 +1,18 @@
+{
+  "sequence": {
+    "maxParallelism": 2,
+    "operations": [
+      {
+        "refresh": {
+          "type": "full",
+          "objects": [
+            {
+              "database": "Contoso",
+              "table": "Sales"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

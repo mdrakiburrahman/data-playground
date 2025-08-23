@@ -1,0 +1,11 @@
+{
+  "refresh": {
+    "type": "automatic",
+    "objects": [
+      {
+        "database": "Contoso",
+        "table": "Sales"
+      }
+    ]
+  }
+}

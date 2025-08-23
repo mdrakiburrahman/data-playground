@@ -1,0 +1,6 @@
+{
+  "detach": {
+    "database": "Contoso",
+    "password":"password"
+  }
+}

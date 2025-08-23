@@ -1,0 +1,12 @@
+{
+  "refresh": {
+    "type": "clearValues",
+    "objects": [
+      {
+        "database": "Contoso",
+        "table": "Sales",
+        "partition": "Sales 2010"
+      }
+    ]
+  }
+}

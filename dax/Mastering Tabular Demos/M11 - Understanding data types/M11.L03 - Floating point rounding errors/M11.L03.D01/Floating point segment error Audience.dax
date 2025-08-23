@@ -1,0 +1,22 @@
+﻿-- This is the code shown in the demo
+-- The Audience database is not available for download
+-- because it is too large (4 billion rows).
+-- If you have a model with hundreds of segments, you can try
+-- to adapt this calculation to your model to see different 
+-- results in different executions of the same query.
+
+--
+--
+--
+EVALUATE { COUNTROWS ( Audience ) }
+
+--
+--	The calculation is useless, it involves integers but, due to the
+--	conversion rules, it results in floating point math
+--
+EVALUATE
+SUMMARIZECOLUMNS (
+    Networks[COD_Network],
+    "Result",
+        SUMX ( Audience, ( Audience[Weight] / ( Audience[Age] * 11200 ) ) * 10000 )
+)

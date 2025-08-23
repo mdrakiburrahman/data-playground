@@ -1,0 +1,17 @@
+{
+  "refresh": {
+    "type": "full",
+    "objects": [
+      {
+        "database": "Contoso",
+        "table": "Sales",
+        "partition": "Sales 2010"
+      },
+      {
+        "database": "Contoso",
+        "table": "Sales",
+        "partition": "Sales 2011"
+      }
+    ]
+  }
+}

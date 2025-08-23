@@ -1,0 +1,32 @@
+{
+    "sequence": {
+        "maxParallelism": 10,
+        "operations": [
+            {
+                "refresh": {
+                    "type": "dataOnly",
+                    "objects": [
+                        {
+                            "database": "Contoso",
+                            "table": "Sales"
+                        },
+                        {
+                            "database": "Contoso",
+                            "table": "Customer"
+                        }
+                    ]
+                }
+            },
+            {
+                "refresh": {
+                    "type": "calculate",
+                    "objects": [
+                        {
+                            "database": "Contoso"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
