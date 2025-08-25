@@ -1,9 +1,0 @@
-{
-	"backup": {
-		"database": "Contoso",
-		"file": "C:\\Demos\\Contoso.abf",
-		"password": "password",
-		"allowOverwrite": true,
-		"applyCompression": true
-	}
-}

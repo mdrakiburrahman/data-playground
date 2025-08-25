@@ -1,7 +1,0 @@
-{
-    "attach":{
-        "folder":"C:\\Program Files\\Microsoft SQL Server\\MSAS15.TABULAR2019\\OLAP\\Data\\Contoso.0.db\\",
-        "readWriteMode":"readWrite",
-        "password":"password"
-    }
-}

@@ -1,8 +1,0 @@
-{   
-   "synchronize":{   
-      "database":"Contoso",  
-      "source":"Provider=MSOLAP.8;Data Source=localhost\tabular2019;Integrated Security=SSPI;Initial Catalog=Contoso",  
-      "synchronizeSecurity":"copyAll",  
-      "applyCompression":true  
-   }  
-}  

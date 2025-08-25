@@ -1,8 +1,0 @@
-﻿-- This query should run for at least 1200 seconds (20 minutes)
-EVALUATE
-VAR A =
-    SELECTCOLUMNS ( GENERATESERIES ( 1, 100000 ), "A", [Value] )
-VAR B =
-    SELECTCOLUMNS ( GENERATESERIES ( 1, 100000 ), "B", [Value] )
-RETURN
-    { COUNTROWS ( CROSSJOIN ( A, B ) ) }

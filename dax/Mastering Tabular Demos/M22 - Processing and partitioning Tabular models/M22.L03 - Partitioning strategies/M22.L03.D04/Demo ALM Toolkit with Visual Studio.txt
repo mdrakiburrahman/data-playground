@@ -1,3 +1,0 @@
-Deploy a Contoso model to Analysis Services.
-Add a measure and add a native column to a table.
-Compare the models using ALM Toolkit.
